@@ -1,0 +1,24 @@
+一、脚本配置及各脚本作用：
+
+1、exe_file：配置所要执行的 程序名、端口号
+
+2、start_check_thread.sh：检查check_thread.sh进程是否存在，若不存在，则调用脚本启动check_thread.sh
+
+3、check_thread.sh:#一直循环，检查我们的程序是否正在执行：检查的为“程序名.py 端口号”
+  		   #程序在执行，则睡眠几秒，之后再查；若程序没有执行，则调用脚本重启执行
+
+4、start.sh:判断程序是否已经启动，未启动的话，①进行启动；②检查启动是否正常；③监听一下启动进程的端口是否正常运行
+
+5、stop.sh:对进程进行关闭操作；进程存在的话，就找出其进程号，进行kill；并检查是否kill成功
+
+6、stop_check_thread.sh:关闭check_thread.sh脚本进程
+
+二、脚本执行过程：
+
+1、执行start_check_thread.sh启动程序
+
+2、执行stop_check_thread.sh查看启动程序的check_thread.sh（未关闭下，是循环执行的）脚本是否已经正常关闭
+
+3、执行stop.sh关闭程序
+
+

@@ -1,0 +1,10 @@
+#!/bin/sh
+set -x
+exist=`ps -ef |awk '{print $8}'| grep "^./check_thread.sh$" | wc -l`
+if [[ $exist == 1 ]]
+then
+    echo "check_thread.sh has started!"
+else
+    nohup ./check_thread.sh >> check_thread.dat &
+    echo "start check thread sh success!"
+fi

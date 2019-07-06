@@ -1,0 +1,3 @@
+src_exe=
+exe=asm_server.py
+serv_port=8888

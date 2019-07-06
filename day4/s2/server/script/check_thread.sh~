@@ -1,0 +1,29 @@
+#!/bin/sh
+#if [ $# -ne 1 ]
+#then
+#    echo "please input exe name"
+#    exit
+#fi
+
+#exe_file=$1
+set -x
+source ./exe_file
+
+while true
+do
+    i=`ps -ef |awk '{print $9" " $10 }'| grep "^./$exe $serv_port$" | wc -l`
+
+    if [ $i == 1 ]
+    then
+        sleep 30
+    else
+        echo "server down!" >> ../log/restart.log
+        ./start.sh >> restart.log
+        #send rtx messange
+        ./send_message.py 13041166753 $exe server_down
+        echo "send message!"
+
+        echo "`date` ${exe_file} restart" >> ../log/restart.log
+        sleep 30
+    fi
+done

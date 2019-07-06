@@ -1,0 +1,17 @@
+#!/bin/bash
+#set -x
+source exe_file
+exist=`ps -ef |awk '{print $9" "$10}'| grep "^./$exe $serv_port$" | wc -l`
+if [[ $exist == 1 ]]; then
+    echo "$exe is OK!"
+else
+    echo "$exe not exist!"
+fi
+
+exist=`netstat -nal | grep LISTEN | grep $serv_port | grep -v grep | wc -l`
+if [[ $exist == 1 ]]; then
+    echo "ServPort $serv_port listen OK!"
+else
+    echo "ServPort $serv_port is not listening!"
+fi
+
