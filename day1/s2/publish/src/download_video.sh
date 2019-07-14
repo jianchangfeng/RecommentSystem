@@ -18,6 +18,7 @@ do
     #下载视频,统一为mp4格式,下载文件会带上扩展名.mp4,但部分不带。。。
     #you-get --output-filename=${data_path}/${video_name} --format=mp4 --debug $link
     you-get --output-filename=${data_path}/${video_name} $link
+    sleep 10
     if [ $? -ne 0 ] #下载出错则报警
     then
         echo "you-get link $link error"

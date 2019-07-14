@@ -1,7 +1,7 @@
 if (typeof(base_url) == "undefined")
 {
   //var base_url = "http://rest.appbk.com/video/"; //修改为服务器的地址
-  var base_url = "http://112.124.115.52:8080/" 
+  var base_url = "http://10.192.208.176:8080/" 
   var uid = "maris@appbk.com" //用户id
 }
 

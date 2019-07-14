@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/cf/Workspace/bigdata/anaconda3/lib/python3.7/site-packages/web/utils.py", line 526, in take
+    yield next(seq)
+StopIteration
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "./video_server.py", line 99, in <module>
+    app = web.application(urls, globals())
+  File "/home/cf/Workspace/bigdata/anaconda3/lib/python3.7/site-packages/web/application.py", line 62, in __init__
+    self.init_mapping(mapping)
+  File "/home/cf/Workspace/bigdata/anaconda3/lib/python3.7/site-packages/web/application.py", line 130, in init_mapping
+    self.mapping = list(utils.group(mapping, 2))
+  File "/home/cf/Workspace/bigdata/anaconda3/lib/python3.7/site-packages/web/utils.py", line 531, in group
+    x = list(take(seq, size))
+RuntimeError: generator raised StopIteration

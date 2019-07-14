@@ -59,10 +59,11 @@ def get_youku_video(category, appbk_category):
             'count': '100' #每页面的数据数
             })
     url = url + "?" +params
-    #print(url)
+    print(url)
     try:
         #json_content = urllib.urlopen(url).read() #python2
         json_content = urllib.request.urlopen(url).read().decode('utf-8')
+        print(22222222222222222222222)
         results = json.loads(json_content)
         print_json(results, appbk_category)
     except Exception as e:
@@ -95,9 +96,16 @@ def print_json(results, appbk_category):
 
 if __name__=="__main__":
     #get_youku_video("搞笑", "搞笑")
-    for line in sys.stdin:
-        line = line.strip()
-        item_list = line.split(" ")
-        category = item_list[0]
-        appbk_categroy = item_list[1]
-        get_youku_video(category, appbk_categroy)
+    # for line in sys.stdin:
+    #     line = line.strip()
+    #     item_list = line.split(" ")
+    #     category = item_list[0]
+    #     appbk_categroy = item_list[1]
+    #     get_youku_video(category, appbk_categroy)
+    with open('category.dat', 'r', encoding='UTF-8') as f:
+        for line in f:
+            print(line)
+            item_list = line.split(" ")
+            category = item_list[0]
+            appbk_categroy = item_list[1]
+            get_youku_video(category, appbk_categroy)
