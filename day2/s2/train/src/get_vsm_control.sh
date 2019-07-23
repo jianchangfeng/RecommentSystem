@@ -9,4 +9,4 @@
 cat 1.txt|./get_idf_cn.py
 
 #step 1,获得向量空间模型
-./get_vsm.py train.dat > train.dat.vsm
+./get_vsm.py idf.dict train.dat > train.dat.vsm

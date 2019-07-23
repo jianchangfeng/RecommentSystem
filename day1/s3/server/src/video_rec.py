@@ -106,5 +106,5 @@ if __name__ == "__main__":
     # sql_com ="select * from video_info_test limit 10"
     # result = sql_appbk.mysql_com(sql_com)
     # print json.dumps(result,cls=sql_appbk.CJsonEncoder)
-    c = '游戏'
+    c = '搞笑'
     print(get_videos_by_category(c))

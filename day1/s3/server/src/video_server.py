@@ -50,7 +50,7 @@ class videos_by_search:
         web.header('Access-Control-Allow-Origin', '*')
         web.header('Content-Type', 'text/json; charset=utf-8', unique=True)
         web.header('Access-Control-Allow-Credentials', 'true')
-        param = web.input(n="游戏", start=0, limit=10)
+        param = web.input(n="搞笑", start=0, limit=10)
         n = param.n  # 搜索词
         start = param.start  # 开始位置
         limit = param.limit  # 取多少记录

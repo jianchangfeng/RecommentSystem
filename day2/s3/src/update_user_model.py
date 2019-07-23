@@ -13,18 +13,19 @@ import sql_appbk
 import get_classify
 import get_tag
 
-
 """
 功能：获得用户未处理的访问记录，将未访问记录的is_processed 变为1
 输入：无
 输出：用户的未处理的行为列表
 """
+
+
 def get_user_actions():
-    #获得未处理的用户行为记录
+    # 获得未处理的用户行为记录
     sql_com = "select * from user_action where is_processed=0"
     result = sql_appbk.mysql_com(sql_com)
 
-    #更新已处理的记录
+    # 更新已处理的记录
     sql_com = "UPDATE user_action set is_processed = 1 WHERE is_processed=0"
     sql_appbk.mysql_com(sql_com)
     return result
@@ -35,6 +36,8 @@ def get_user_actions():
 输入：vid, 视频id
 返回：视频信息列表，每一条记录包含视频内部id和标题
 """
+
+
 def get_video_info(vid):
     sql_com = "select id,title from video_info where id =" + str(vid)
     result = sql_appbk.mysql_com(sql_com)
@@ -48,6 +51,8 @@ def get_video_info(vid):
 返回：一个list，0，类别标签；1 关键词标签 ， 多个标签之间用英文逗号分隔
 
 """
+
+
 def get_tags(text):
     # 获得类别标签
     classes = get_classify.classify(text)
@@ -71,6 +76,7 @@ def get_tags(text):
 返回：用户的类别和关键词标签列表
 """
 
+
 def get_user_tags(uid):
     sql_com = "SELECT appbk_sub_category,appbk_tags FROM user_tags WHERE uid = '" + str(uid) + "'"
     result = sql_appbk.mysql_com(sql_com)
@@ -86,13 +92,15 @@ def get_user_tags(uid):
 输入：new_tags，新的标签列表，逗号分隔
 返回：合并后的标签列表，逗号分隔
 """
+
+
 def combine(old_tags, new_tags):
-    if not old_tags:#如果不为空
+    if not old_tags:  # 如果不为空
         tag_list = []
     else:
         tag_list = old_tags.split(",")
 
-    if ""!=new_tags:
+    if "" != new_tags:
         tag_list.extend(new_tags.split(","))
 
     if 0 == len(tag_list):
@@ -113,6 +121,8 @@ def combine(old_tags, new_tags):
 返回：更新结果
 
 """
+
+
 def update_db(uid, appbk_new_sub_category, appbk_new_tags):
     # 获得当前时间
     update_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
@@ -129,21 +139,26 @@ def update_db(uid, appbk_new_sub_category, appbk_new_tags):
 输入：无
 输出：无
 """
+
+
 def update_user_model():
     # step1 获得所有未处理的访问记录，将未访问记录的is_processed 变为1
+    print(111111111111111)
     action_list = get_user_actions()
+    print(222222222222222)
     print(action_list)
     # 处理每条记录
     for action in action_list:
-        vid = action["source_vid"] #视频id
-        uid = action["uid"] #用户id
-        #获得视频信息
+        print(action)
+        vid = action["source_vid"]  # 视频id
+        uid = action["uid"]  # 用户id
+        # 获得视频信息
         video_info = get_video_info(vid)
         text = video_info["title"]
 
         # 根据访问记录抽取类别和关键词标签
         [classes, keywords] = get_tags(text)
-        print(classes,keywords)
+        print(classes, keywords)
 
         # step2 合并类别标签和关键词标签
         # 有新的关键词直接添加到原有关键词后面，关键词标签最多保留100个.类别标签同理
@@ -151,17 +166,15 @@ def update_user_model():
         appbk_sub_category = user_tag["appbk_sub_category"]
         appbk_tags = user_tag["appbk_tags"]
 
-        #旧的和新的合并
+        # 旧的和新的合并
         appbk_new_sub_category = combine(appbk_sub_category, classes)
         appbk_new_tags = combine(appbk_tags, keywords)
 
-        #print appbk_new_sub_category,appbk_new_tags
+        # print appbk_new_sub_category,appbk_new_tags
 
         # step4 合并到数据库
         ret = update_db(uid, appbk_new_sub_category, appbk_new_tags)
 
 
-
 if __name__ == '__main__':
     update_user_model()
-

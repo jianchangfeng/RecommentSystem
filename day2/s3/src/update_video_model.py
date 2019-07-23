@@ -19,10 +19,13 @@ import get_tag
 输出：无
 返回：视频信息列表，每一条记录包含视频内部id和标题
 """
+
+
 def get_video_list():
-    sql_com="select id,title from video_info where appbk_sub_category is null"
+    sql_com = "select id,title from video_info where appbk_sub_category is null"
     result = sql_appbk.mysql_com(sql_com)
     return result
+
 
 """
 功能：获得一个文本的类别标签和关键词标签
@@ -31,6 +34,8 @@ def get_video_list():
 返回：一个list，0，类别标签；1 关键词标签 ， 多个标签之间用英文逗号分隔
 
 """
+
+
 def get_tags(text):
     # 获得类别标签
     classes = get_classify.classify(text)
@@ -47,14 +52,16 @@ def get_tags(text):
 
     return [classes_str, keywords_str]
 
+
 """
 功能：更新到数据库
 """
-def update_db(vid,appbk_sub_category,appbk_tags):
 
-    sql_com="update video_info set appbk_sub_category='" \
-            + appbk_sub_category +"', appbk_tags='" + appbk_tags \
-            + "' where id=" + str(vid)
+
+def update_db(vid, appbk_sub_category, appbk_tags):
+    sql_com = "update video_info set appbk_sub_category='" \
+              + appbk_sub_category + "', appbk_tags='" + appbk_tags \
+              + "' where id=" + str(vid)
     result = sql_appbk.mysql_com(sql_com)
     return result
 
@@ -64,16 +71,19 @@ def update_db(vid,appbk_sub_category,appbk_tags):
 输入：无
 输出：无
 """
+
+
 def update_video_model():
-    #获得所有未处理的视频
+    # 获得所有未处理的视频
     video_list = get_video_list()
     for video in video_list:
         text = video["title"]
         vid = video["id"]
         [classes, keywords] = get_tags(text)
-        #更新数据库
+        # 更新数据库
         update_db(vid, classes, keywords)
     return 0
+
 
 if __name__ == '__main__':
     update_video_model()

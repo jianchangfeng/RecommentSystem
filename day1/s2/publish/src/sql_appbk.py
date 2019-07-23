@@ -110,7 +110,7 @@ def insert_data(data, table_name):
 
 
 if __name__ == "__main__":
-    sql_com = 'select * from video_info limit 10'
+    sql_com = 'select * from video_info limit 10000'
     result = mysql_com(sql_com)
     for row in result:
         print(row["title"])

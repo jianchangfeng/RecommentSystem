@@ -17,6 +17,10 @@ angular.module('starter')
         {
             $scope.data.videos = data.results;
         });
+        Chats.get_videos_by_category().get({c:"搞笑"},function(data)
+        {
+            $scope.data.videos = data.results;
+        });
 
         /*
       $http({method: 'GET', url: './js/data/videos.json'}).then(function successCallback(response) {
