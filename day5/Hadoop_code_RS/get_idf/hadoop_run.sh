@@ -11,7 +11,8 @@ cd -
 #开始执行hadoop操作
 hadoop fs -rm -r /video/maris/get_idf/output
 #hadoop org.apache.hadoop.streaming.HadoopStreaming \
-hadoop jar /opt/apps/ecm/service/hadoop/2.7.2/package/hadoop-2.7.2/share/hadoop/tools/lib/hadoop-streaming-2.7.2.jar \
+#hadoop jar /opt/apps/ecm/service/hadoop/2.7.2/package/hadoop-2.7.2/share/hadoop/tools/lib/hadoop-streaming-2.7.2.jar \
+hadoop jar /bigdata/hadoop-2.8.4/share/hadoop/tools/lib/hadoop-streaming-2.8.4.jar \
     -input /video/maris/get_idf/input/* \
     -output /video/maris/get_idf/output \
     -mapper "./get_idf/get_idf_mapper.py" \

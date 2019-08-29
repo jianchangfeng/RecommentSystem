@@ -3,7 +3,8 @@ set -x
 #hadoop 基准测试，测试hadoop是否出问题
 hadoop fs -rm -r /video/maris/word_count/output
 #hadoop org.apache.hadoop.streaming.HadoopStreaming \
-hadoop jar /bigdata/hadoop-2.8.5/share/hadoop/tools/lib/hadoop-streaming-2.8.5.jar \
+#hadoop jar /bigdata/hadoop-2.8.5/share/hadoop/tools/lib/hadoop-streaming-2.8.5.jar \
+hadoop jar /bigdata/hadoop-2.8.4/share/hadoop/tools/lib/hadoop-streaming-2.8.4.jar \
     -D mapreduce.job.reduces=1 \
     -input /video/maris/word_count/input/ \
     -output /video/maris/word_count/output \
