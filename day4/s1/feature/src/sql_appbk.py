@@ -1,40 +1,52 @@
 #!/usr/bin/python
-#coding=utf-8
-#功能，appbk数据库访问
-#输入数据库表和sql命令，返回结果
+# coding=utf-8
+# 功能，appbk数据库访问
+# 输入数据库表和sql命令，返回结果
 import os
 import sys
 import time
 import json
 import pymysql
+
 pymysql.install_as_MySQLdb()
 import MySQLdb
 
-g_db_host = "rm-bp1w81w3y5da24ape.mysql.rds.aliyuncs.com" #线上机器
-g_db_user = "rootali"
-g_db_pw = "Rootali1"
-g_db_name = "short_video" #数据库名
+# g_db_host = "rm-bp1w81w3y5da24ape.mysql.rds.aliyuncs.com" #线上机器
+# g_db_user = "rootali"
+# g_db_pw = "Rootali1"
+# g_db_name = "short_video" #数据库名
 
+g_db_host = "rm-2zemcvpd7o8r668n7do.mysql.rds.aliyuncs.com"  # 外网
+# g_db_host = "rm-2zemcvpd7o8r668n7.mysql.rds.aliyuncs.com"  # 内网
+g_db_user = "root"
+g_db_pw = "Jcfcxl_1314"
+g_db_name = "short_video"  # 数据库名
 """
 功能：连接数据
 """
+
+
 def connect_db():
     db = ''
     try:
-        db = MySQLdb.connect(host = g_db_host, user=g_db_user, passwd = g_db_pw, db = g_db_name,charset='utf8',connect_timeout=10)
+        db = MySQLdb.connect(host=g_db_host, user=g_db_user, passwd=g_db_pw, db=g_db_name, charset='utf8',
+                             connect_timeout=10)
     except Exception as e:
         print(e)
         return '-1'
 
     return db
 
+
 """
 功能：执行mysql命令，返回结果
 输入：sql_com, sql命令
 返回：mysql查询结果数组
 """
+
+
 def mysql_com(sql_com):
-    #连接数据库
+    # 连接数据库
     for i in range(3):
         db = connect_db()
 
@@ -45,14 +57,15 @@ def mysql_com(sql_com):
 
     result = []
     if db != '-1':
-        #执行mysql命令
-        #cursor = db.cursor()
+        # 执行mysql命令
+        # cursor = db.cursor()
         cursor = db.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute(sql_com)
         result = cursor.fetchall()
         db.commit()
         db.close()
     return result
+
 
 """
 功能：执行mysql插入命令
@@ -96,9 +109,10 @@ def insert_data(data, table_name):
     except Exception as e:
         return e
 
-if __name__=="__main__":
-    sql_com ='select * from video_info limit 10'
+
+if __name__ == "__main__":
+    sql_com = 'select * from video_info limit 10'
     result = mysql_com(sql_com)
     for row in result:
-        print (row["title"])
-        #print row[0],'\t',row[1],'\t',row[2],'\t',row[3],'\t',row[4]
+        print(row["title"])
+        # print row[0],'\t',row[1],'\t',row[2],'\t',row[3],'\t',row[4]

@@ -4,7 +4,7 @@ import os
 import sys
 import time
 import json
-import urllib2
+import urllib3
 import urllib
 import ConfigParser
 import logging

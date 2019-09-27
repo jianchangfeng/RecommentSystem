@@ -16,8 +16,8 @@ import get_ctr #ctr预估
 import sql_appbk
 import random
 
-OSS_URL = "http://appbkplay.oss-cn-hangzhou.aliyuncs.com/play1/" #存储地址
-
+# OSS_URL = "http://appbkplay.oss-cn-hangzhou.aliyuncs.com/play1/" #存储地址
+OSS_URL = "https://shortvedos.oss-cn-beijing.aliyuncs.com/play01/"  # 存储地址
 """
 功能：获得一个视频的信息
 输入：id，视频内部id

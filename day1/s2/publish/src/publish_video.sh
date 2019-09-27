@@ -10,7 +10,7 @@ do
     video_file=`echo $line|sed 's/sign/mp4/'`
     #解析不带路径的
     filename=`echo ${video_file}|awk -F "/" '{print $NF}'`
-    ossutil64 cp $video_file oss://shortvedos/play01/
+    ossutil64 cp $video_file oss://shortvedos/play02/
 
     #判断上条命令是否执行成功；如果不成功，报警
     if [ $? -ne 0 ]

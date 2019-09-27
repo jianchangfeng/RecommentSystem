@@ -11,11 +11,15 @@ import pymysql
 pymysql.install_as_MySQLdb()
 import MySQLdb
 
-g_db_host = "rm-bp1w81w3y5da24ape.mysql.rds.aliyuncs.com" #线上机器
-g_db_user = "rootali"
-g_db_pw = "Rootali1"
-g_db_name = "short_video" #数据库名
+# g_db_host = "rm-bp1w81w3y5da24ape.mysql.rds.aliyuncs.com" #线上机器
+# g_db_user = "rootali"
+# g_db_pw = "Rootali1"
+# g_db_name = "short_video" #数据库名
 
+g_db_host = "rm-2zemcvpd7o8r668n7do.mysql.rds.aliyuncs.com" #线上机器
+g_db_user = "root"
+g_db_pw = "Jcfcxl_1314"
+g_db_name = "short_video" #数据库名
 
 """
 功能：解决datatime字段输不出json格式错误

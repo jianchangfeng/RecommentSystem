@@ -70,7 +70,6 @@ def get_recommend(action_data, uid, sim=cos_distance):
     for other_uid in action_data:
         if uid == other_uid:  # 自己的不计算
             continue
-
         other_action = action_data[other_uid]  # 其他用户的行为数据
         sim_score = sim(uid_action, other_action)
 
@@ -102,13 +101,12 @@ def get_recommend(action_data, uid, sim=cos_distance):
 """
 
 
-def get_all_recommend(filename="action.dat", max_num=50):
+def get_all_recommend(filename="action.dat", max_num=5):
     # step 1, 加载用户行为数据
     action_data = load_action_data()
 
     # step 2, 获得所有用户的推荐,每个用户最多推荐max_num个视频
     for uid in action_data:
-        print(uid)
         vid_score_list = get_recommend(action_data, uid)  # 推荐的视频vid列表
         vid_list = []
         for vid, score in vid_score_list:

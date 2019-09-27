@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#coding=utf-8
+# coding=utf-8
 #########################################################################
 # Author: @appbk.com
 # Created Time: Sun 16 Jul 2017 12:07:21 PM CST
@@ -9,6 +9,7 @@
 import json
 import time
 import sys
+
 sys.path.append("/root/base")
 import sql_appbk
 
@@ -17,6 +18,8 @@ import sql_appbk
 输入:uid, 用户id
 返回:推荐的视频id列表
 """
+
+
 def get_item_based_rec(uid):
     vid_list = []
     sql = "SELECT vid,sum(sim) as score from ( \
@@ -24,7 +27,7 @@ def get_item_based_rec(uid):
                     SELECT vid2 as vid,sim from item_based_rec WHERE vid1 in \
                         (SELECT * FROM \
                             ( \
-                                select source_vid from user_action  where uid='"+uid+"' ORDER BY rand() limit 10 \
+                                select source_vid from user_action  where uid='" + uid + "' ORDER BY rand() limit 10 \
                             ) as vid_list) \
                 ) \
                 UNION \
@@ -32,7 +35,7 @@ def get_item_based_rec(uid):
                     SELECT vid1 as vid,sim from item_based_rec WHERE vid2 in \
                         (SELECT * FROM  \
                             ( \
-                                select source_vid from user_action  where uid='"+uid+"' ORDER BY rand() limit 10 \
+                                select source_vid from user_action  where uid='" + uid + "' ORDER BY rand() limit 10 \
                             ) as vid_list \
                         ) \
                 ) \
@@ -42,6 +45,6 @@ def get_item_based_rec(uid):
         vid_list.append(item["vid"])
     return vid_list
 
-if __name__=="__main__":
-    print (get_item_based_rec("1"))
 
+if __name__ == "__main__":
+    print(get_item_based_rec("1"))

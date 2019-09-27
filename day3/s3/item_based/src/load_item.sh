@@ -2,11 +2,14 @@
 #set -x
 #数据库连接信息
 #新数据库,内网
-db_host='rm-bp1w81w3y5da24ape.mysql.rds.aliyuncs.com'
-db_user='rootali'
-db_pw='Rootali1'
-db_name='short_video'
-
+#db_host='rm-bp1w81w3y5da24ape.mysql.rds.aliyuncs.com'
+#db_user='rootali'
+#db_pw='Rootali1'
+#db_name='short_video'
+db_host="rm-2zemcvpd7o8r668n7do.mysql.rds.aliyuncs.com"  # 线上机器
+db_user="root"
+db_pw="Jcfcxl_1314"
+db_name="short_video"  # 数据库名
 item_file=$1
 
 data_num=`wc -l $1`

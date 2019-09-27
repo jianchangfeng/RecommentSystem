@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding=utf-8
+# coding=utf-8
 #########################################################################
 # Author: @appbk.com
 # Created Time: Sun 16 Jul 2017 12:07:21 PM CST
@@ -16,9 +16,11 @@ import sql_appbk
 输入:uid, 用户id
 返回:推荐的视频id列表
 """
+
+
 def get_user_based_rec(uid):
     vid_list = []
-    sql = "select vid from user_based_rec where uid='" + uid +"'"
+    sql = "select vid from user_based_rec where uid='" + uid + "'"
     result = sql_appbk.mysql_com(sql)
     if result:
         vids = result[0]["vid"]
@@ -26,6 +28,6 @@ def get_user_based_rec(uid):
 
     return vid_list
 
-if __name__=="__main__":
-    print (get_user_based_rec("1"))
 
+if __name__ == "__main__":
+    print(get_user_based_rec("1"))

@@ -8,7 +8,9 @@ import re
 import get_vsm  # 获得向量模型
 from sklearn.svm.libsvm import predict
 
-sys.path.append('/root/bigdata/develop_kit/liblinear-2.30/python')
+# sys.path.append('/root/bigdata/develop_kit/liblinear-2.30/python')
+sys.path.append('/root/liblinear/liblinear-2.30/python/')
+
 from liblinear import *
 from liblinearutil import *
 
@@ -67,7 +69,7 @@ def classify(line):
 get_vsm.load_word_dict("idf.dict")
 load_classes()  # 加载类别
 # model_ = load_model("iqiyi_1.train.vsm.model")  # 加载模型
-model_ = load_model("iqiyi_1.train.vsm.model")  # 加载模型
+model_ = load_model("iqiyi.train.vsm.model")  # 加载模型
 # 处理每一行
 """
 for line in sys.stdin:

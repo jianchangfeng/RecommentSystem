@@ -15,7 +15,11 @@ def publish_data(data, table_name):
     # db_host = "rm-bp1w81w3y5da24ape.mysql.rds.aliyuncs.com"
     # db_user = "rootali"
     # db_pw = "Rootali1"
-    db_host = "10.192.208.176"  # 线上机器
+    # db_host = "10.192.208.176"  # 线上机器
+    # db_user = "root"
+    # db_pw = "Jcfcxl_1314"
+    # db_name = "short_video"  # 数据库名
+    db_host = "rm-2zemcvpd7o8r668n7do.mysql.rds.aliyuncs.com"  # 线上机器
     db_user = "root"
     db_pw = "Jcfcxl_1314"
     db_name = "short_video"  # 数据库名

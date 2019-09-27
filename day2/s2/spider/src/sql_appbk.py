@@ -17,7 +17,13 @@ import MySQLdb
 # g_db_pw = "Rootali1"
 # g_db_name = "short_video" #数据库名
 
-g_db_host = "localhost"  # 线上机器
+# g_db_host = "localhost"  # 线上机器
+# g_db_user = "root"
+# g_db_pw = "Jcfcxl_1314"
+# g_db_name = "short_video"  # 数据库名
+
+g_db_host = "rm-2zemcvpd7o8r668n7do.mysql.rds.aliyuncs.com"  # 外网
+# g_db_host = "rm-2zemcvpd7o8r668n7.mysql.rds.aliyuncs.com"  # 内网
 g_db_user = "root"
 g_db_pw = "Jcfcxl_1314"
 g_db_name = "short_video"  # 数据库名

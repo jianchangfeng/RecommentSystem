@@ -37,4 +37,4 @@ def recommend(uid, limit=10):
 
 
 if __name__ == "__main__":
-    print(recommend("1"))
+    print(recommend("2"))

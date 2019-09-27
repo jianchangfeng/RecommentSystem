@@ -15,7 +15,7 @@ import random
 # reload(sys)
 # sys.setdefaultencoding('utf8')
 
-OSS_URL = "https://shortvedos.oss-cn-beijing.aliyuncs.com/play01/"  # 存储地址
+OSS_URL = "https://shortvedos.oss-cn-beijing.aliyuncs.com/play02/"  # 存储地址
 
 """
 功能：获得一个视频的信息
@@ -86,8 +86,8 @@ def get_videos_by_category(c, start=0, limit=10, uid=0, pid=0):
 
 
 def get_hot_videos(c, limit=400):
-    # 取7天内的结果, limit取足够大
-    start_day = time.strftime('%Y-%m-%d', time.localtime(time.time() - 7 * 24 * 60 * 60))
+    # 取70天内的结果, limit取足够大
+    start_day = time.strftime('%Y-%m-%d', time.localtime(time.time() - 70 * 24 * 60 * 60))
     sql = "SELECT id,vid,title,thumbnail,link,duration, \
             bigThumbnail,view_count,appbk_category,source,published \
             FROM video_info WHERE down_action_time>'" + start_day + "' \
